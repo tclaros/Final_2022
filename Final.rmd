@@ -1,12 +1,12 @@
 ---
-title: "Covid91 vaccine study Final2022"
-author: "Put your name here!"
+title: "Covid19 vaccine study Final2022"
+author: "Tanya Claros"
 output: 
   html_document:
     number_sections: true
     toc: true
     toc_depth: 5
-date: "`r Sys.Date()`" 
+date: "Summer 2022" 
 ---
 
 ```{r include=FALSE,echo=FALSE}
@@ -18,21 +18,157 @@ FinalDat <-read.csv(file="final_Data.csv",header=TRUE)
 FinalData <- FinalDat  %>% select(-one_of("X"))
 FinalData <- FinalData %>%
 mutate(across(where(is.character), as.factor))
+People <-read.csv(file="final_Data.csv",header=TRUE)
+Females = filter(FinalData,sex=="F")
+Males = filter(FinalData,sex=="M")
+LGBTQ = filter(FinalData,LGBTQ=="straight")
+LGBTQ = filter(FinalData,LGBTQ=="gay")
+DrugUser = filter(FinalData, DrugUser=="no")
+DrugUser = filter(FinalData, DrugUser=="yes")
+Infected = filter(FinalData, infected=="covid19")
 ```
 
 # Introduction
 
-A new  preventative vaccine (covid91) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of subpopulations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbage when referencing p-values in conclusions.
+A new  preventative vaccine (covid19) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of sub populations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbiage when referencing p-values in conclusions.
+  
+$H_0$: The drug was not effective in preventing individuals from contracting the virus.   
+$H_A$: The drug was effective in preventing individuals from contracting the virus.  
 
 ## Males
 
+## Descriptive Results
+
+### Graphical Descriptive Results
+  
+```{r}
+barchartGC(~infected + treatment,data=Males)
+barchartGC(~infected + treatment,data=Males, type="percent")
+
+```  
+  
+The bar chart shows that men that received the placebo, we more likely to get the virus. Men....
+
+### Numerical Descriptive Results
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=Males)
+rowPerc(table1)
+colPerc(table1)
+```  
+  
+The table shows that if a male were to get the vaccine, he would be ???x more likely to contract the virus in comparison to the placebo group.    
+  
+## Inferential Results
+ 
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```  
+  
+I reject the null hypothesis because the p-value is less than 0.05. The p-value is 0.00000000004812. The fisher exact table is also significant in showing that we reject the null hypothesis because the p-value 0.00000000002645.    
 
 ## Females
 
+## Descriptive Results
 
+### Graphical Descriptive Results
+  
+```{r}
+barchartGC(~infected + treatment,data=Females)
+barchartGC(~infected + treatment,data=Females, type="percent")
+
+```  
+  
+The bar chart shows that men that received the placebo, we more likely to get the virus. Men....
+
+### Numerical Descriptive Results
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=Females)
+rowPerc(table1)
+colPerc(table1)
+```    
+  
+The table shows that if a females were to get the vaccine, she would be ???x more likely to contract the virus in comparison to the placebo group.    
+  
+## Inferential Results
+ 
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```  
+   
+I reject the null hypothesis because the p-value is less than 0.05. The p-value is 0.0011. The fisher exact table is also significant in showing that we reject the null hypothesis because the p-value = 0.0009484.     
+   
 ## LGBTQ
 
+## Descriptive Results
 
+### Graphical Descriptive Results
+  
+```{r}
+barchartGC(~infected + treatment,data=LGBTQ)
+barchartGC(~infected + treatment,data=LGBTQ, type="percent")
 
+```  
+  
+The bar chart shows the group LQBTQ that received the placebo, were more likely to get the virus. ???....
+
+### Numerical Descriptive Results
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=LGBTQ)
+rowPerc(table1)
+colPerc(table1)
+```      
+  
+The table shows that if an LGBTQ were to get the vaccine, they would be ???x more likely to contract the virus in comparison to the placebo group.    
+  
+## Inferential Results
+ 
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```    
+  
+I reject the null hypothesis because the p-value is less than 0.05. The p-value is 0.0000000132. The fisher exact table is also significant in showing that we reject the null hypothesis because the p-value = 0.000000001642.   
+  
 ## Druggies
 
+## Descriptive Results
+
+### Graphical Descriptive Results
+  
+```{r}
+barchartGC(~infected + treatment,data=DrugUser)
+barchartGC(~infected + treatment,data=DrugUser, type="percent")
+
+```  
+  
+The bar chart shows the group drug users that received the placebo, were more likely ???....
+
+### Numerical Descriptive Results
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=DrugUser)
+rowPerc(table1)
+colPerc(table1)
+```        
+  
+The table shows that if a drug user were to get the vaccine, they would be ???x more likely to contract the virus in comparison to the placebo group.    
+  
+## Inferential Results
+ 
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```      
+  
+I reject the null hypothesis because the p-value is less than 0.05. The p-value is 0.0000001803. The fisher exact table is also significant in showing that we reject the null hypothesis because the p-value = 0.00000002886.   
+
+# Discussion and Conclusion
