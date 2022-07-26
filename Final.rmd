@@ -30,10 +30,14 @@ Infected = filter(FinalData, infected=="covid19")
 
 # Introduction
 
-A new  preventative vaccine (covid19) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of sub populations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbiage when referencing p-values in conclusions.
+A new  preventative vaccine (covid19) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of sub populations tracked. Consider population subgroups by gender (guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbiage when referencing p-values in conclusions.
   
-$H_0$: The drug was not effective in preventing individuals from contracting the virus.   
-$H_A$: The drug was effective in preventing individuals from contracting the virus.  
+$H_0$: The drug was not effective in preventing individuals (male, female, LGBTQ, DrugUser) from contracting the virus.   
+$H_A$: The drug was effective in preventing individuals (male, female, LGBTQ, DrugUser) from contracting the virus.  
+  
+# Methods
+
+Both the treatment and the subgroups: sex (male/female), LGBTQ, DrugUser are categorical variables. Therefore, the method of analysis technique used will be cat~cat. I will use a bar chart for graphical results, a cross table for numerical results, a chi-square test and fisher exact test for inference.
 
 ## Males
 
@@ -47,8 +51,8 @@ barchartGC(~infected + treatment,data=Males, type="percent")
 
 ```  
   
-The bar chart shows that men that received the placebo, we more likely to get the virus. Men....
-
+The bar chart shows that males who take the vaccine (covid19) are less likely to contract the virus. Males who take the placebo are 68% more likely to contract covid19 versus males who took the vaccine and contacted covid19 32% of the time.
+  
 ### Numerical Descriptive Results
 
 ```{r}
@@ -57,7 +61,7 @@ rowPerc(table1)
 colPerc(table1)
 ```  
   
-The table shows that if a male were to get the vaccine, he would be ???x more likely to contract the virus in comparison to the placebo group.    
+The table shows that males who took the placebo we more likely to get covid19, infection rate 67.78% versus 32.22% who got the vaccine. Males in the placebo group are 2 times more likely to become infected when receiving the placebo.  
   
 ## Inferential Results
  
@@ -67,7 +71,7 @@ chisqtestGC(table1)
 fisher.test(table1)
 ```  
   
-I reject the null hypothesis because the p-value is less than 0.05. The p-value is 0.00000000004812. The fisher exact table is also significant in showing that we reject the null hypothesis because the p-value 0.00000000002645.    
+I reject the null hypothesis because the p-value is less than 0.05. The p-value is 0.00000000004812. The fisher exact table is also significant in showing that we reject the null hypothesis because the p-value 0.00000000002645. The test also confirms that the odds ratio of males who take the placebo contract covid19 2 to 1 more times. I would recommend the Covid19 vaccine for the Male subgroup.  
 
 ## Females
 
@@ -81,7 +85,7 @@ barchartGC(~infected + treatment,data=Females, type="percent")
 
 ```  
   
-The bar chart shows that men that received the placebo, we more likely to get the virus. Men....
+The bar chart shows that Females who take the vaccine (covid19) are less likely to contract the virus. Females who took the placebo are 58% more likely to contract covid19 versus Females who took the vaccine and contacted covid19 42% of the time.  
 
 ### Numerical Descriptive Results
 
@@ -91,7 +95,7 @@ rowPerc(table1)
 colPerc(table1)
 ```    
   
-The table shows that if a females were to get the vaccine, she would be ???x more likely to contract the virus in comparison to the placebo group.    
+The table shows that Females who took the placebo were 58.98% more likely to get infected versus 41.11% who got the vaccine. The Females in the placebo group are 1.5 times more likely to become infected when receiving the placebo.
   
 ## Inferential Results
  
@@ -101,7 +105,7 @@ chisqtestGC(table1)
 fisher.test(table1)
 ```  
    
-I reject the null hypothesis because the p-value is less than 0.05. The p-value is 0.0011. The fisher exact table is also significant in showing that we reject the null hypothesis because the p-value = 0.0009484.     
+I reject the null hypothesis because the p-value is less than 0.05. The p-value is 0.0011. The fisher exact table is also significant in showing that we reject the null hypothesis because the p-value = 0.0009484. The test also confirms that the odds ratio of females who take the placebo contract covid19 almost 1.4 more times than Females who took the vaccine. I would recommend the Covid19 vaccine for the Female subgroup.    
    
 ## LGBTQ
 
@@ -115,8 +119,8 @@ barchartGC(~infected + treatment,data=LGBTQ, type="percent")
 
 ```  
   
-The bar chart shows the group LQBTQ that received the placebo, were more likely to get the virus. ???....
-
+The bar chart shows the subgroup LQBTQ that received the placebo are 13% less likely to contract covid19. The ones to got the vaccine contracted the virus 87% of time. 
+  
 ### Numerical Descriptive Results
 
 ```{r}
@@ -125,7 +129,7 @@ rowPerc(table1)
 colPerc(table1)
 ```      
   
-The table shows that if an LGBTQ were to get the vaccine, they would be ???x more likely to contract the virus in comparison to the placebo group.    
+The table shows that in subgroup LGBTQ who took the vaccine have a higher infection rate. Those who took the placebo had 13.33% infection rate versus 86.67% who took the vaccine. 
   
 ## Inferential Results
  
@@ -135,8 +139,8 @@ chisqtestGC(table1)
 fisher.test(table1)
 ```    
   
-I reject the null hypothesis because the p-value is less than 0.05. The p-value is 0.0000000132. The fisher exact table is also significant in showing that we reject the null hypothesis because the p-value = 0.000000001642.   
-  
+I reject the null hypothesis because the p-value is less than 0.05. The p-value is 0.0000000132. The fisher exact table is also significant in showing that we reject the null hypothesis because the p-value = 0.000000001642. The odds ratio is 0.1465. I would not recommend that members of the LGBTQ subgroup get the covid19 vaccine.   
+    
 ## Druggies
 
 ## Descriptive Results
@@ -149,8 +153,8 @@ barchartGC(~infected + treatment,data=DrugUser, type="percent")
 
 ```  
   
-The bar chart shows the group drug users that received the placebo, were more likely ???....
-
+The bar chart shows the group DrugUsers that those who got the vaccine are 85% more like to contract covid19 versus those who took the placebo at 15% contraction rate.
+  
 ### Numerical Descriptive Results
 
 ```{r}
@@ -159,7 +163,7 @@ rowPerc(table1)
 colPerc(table1)
 ```        
   
-The table shows that if a drug user were to get the vaccine, they would be ???x more likely to contract the virus in comparison to the placebo group.    
+The table shows a higher infection rate for those who got the vaccine. Those who took the placebo became infected approximately 15% of the time versus 85% who got the vaccine and contracted covid19.  
   
 ## Inferential Results
  
@@ -169,6 +173,12 @@ chisqtestGC(table1)
 fisher.test(table1)
 ```      
   
-I reject the null hypothesis because the p-value is less than 0.05. The p-value is 0.0000001803. The fisher exact table is also significant in showing that we reject the null hypothesis because the p-value = 0.00000002886.   
+I reject the null hypothesis because the p-value is less than 0.05. The p-value is 0.0000001803. The fisher exact table is also significant in showing that we reject the null hypothesis because the p-value = 0.00000002886. The odds ratio is 0.1775. I would not recommend that members of the DrugUser subgroup get the covid19 vaccine.  
 
 # Discussion and Conclusion
+
+The question asked was to determine whether the covid19 vaccine affected the subgroups Male, Female, LGBTQ, and DrugUser tested. Additionally, we were asked to recommend or not recommend the covid19 vaccine for the four subgroups. The Male subgroup was affected positively by the vaccine. Males were less likely to contract covid19 after receiving the vaccine versus the placebo. The Female subgroup showed a positive effect as well. Females who took the vaccine were also affected positively compared to those who took the placebo. Therefore, I conclude that both Males and Females should take the covid19 vaccine.
+  
+The next subgroup includes the LGBTQ subgroup who were negatively affected by the covid19 vaccine. LGBTQ individuals were more likely to contract covid19 after taking the vaccine. The placebo seemed more effective for this subgroup. The subgroup DrugUser also showed a negative affect when they took the covid19 vaccine versus the placebo. Members of this group were more likely to contract covid19 after taking getting the vaccine. Therefore, I conclude that members of the LGBTQ subgroup and members of the DrugUser subgroup should not get the vaccine as they are more likely to contract covid19.
+  
+The vaccine had an affect on each of the subgroups. Males and Females were affected positively. I would recommend that these two groups get the covid19 vaccine. The LGBTQ and DrugUser subgroups were affected negatively. I do not recommend that either of these two subgroups get the covid19 vaccine. The results showed that there is a difference in each of these subgroups. Therefore in each case I rejected the null hypothesis.  
