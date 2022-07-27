@@ -127,7 +127,7 @@ I reject the null hypothesis because the p-value is less than 0.05. The p-value 
 
 ```{r}
 efficFemales = 1.43/(1.43 + 1) * 100
-efficFemales = round(efficMales)
+efficFemales = round(efficFemales)
 
 confIntLower = 1.15/(1.15 + 1) * 100
 confIntLower = round(confIntLower)
@@ -135,7 +135,7 @@ confIntUpper = 1.78/(1.78 + 1) * 100
 confIntUpper = round(confIntUpper)
 ```
   
-The efficacy for Females was `r efficMales`%  
+The efficacy for Females was `r efficFemales`%  
 
 The 95% confidence interval for efficacy was (`r confIntLower` , `r confIntUpper`)%
    
@@ -151,7 +151,7 @@ barchartGC(~infected + treatment,data=LGBTQ, type="percent")
 
 ```  
   
-The bar chart shows the subgroup LQBTQ that received the placebo are 13% less likely to contract covid19. The ones to got the vaccine contracted the virus 87% of time. 
+The bar chart shows the subgroup LQBTQ that received the placebo are 13% likely to contract covid19. The ones to got the vaccine contracted the virus 87% of time. 
   
 ### Numerical Descriptive Results
 
@@ -177,7 +177,7 @@ I reject the null hypothesis because the p-value is less than 0.05. The p-value 
 
 ```{r}
 efficLGBTQ = 0.15/(0.15 + 1) * 100
-efficLGBTQ = round(efficMales)
+efficLGBTQ = round(efficLGBTQ)
 
 confIntLower = 0.06/(0.06 + 1) * 100
 confIntLower = round(confIntLower)
@@ -185,7 +185,7 @@ confIntUpper = 0.31/(0.31 + 1) * 100
 confIntUpper = round(confIntUpper)
 ```
   
-The efficacy for LGBTQ was `r efficMales`%  
+The efficacy for LGBTQ was `r efficLGBTQ`%  
 
 The 95% confidence interval for efficacy was (`r confIntLower` , `r confIntUpper`)%
     
@@ -201,7 +201,7 @@ barchartGC(~infected + treatment,data=DrugUser, type="percent")
 
 ```  
   
-The bar chart shows the group DrugUsers that those who got the vaccine are 85% more like to contract covid19 versus those who took the placebo at 15% contraction rate.
+The bar chart shows the group DrugUsers who got the vaccine are 85% more like to contract covid19 versus those who took the placebo at 15% contraction rate.
   
 ### Numerical Descriptive Results
 
@@ -227,7 +227,7 @@ I reject the null hypothesis because the p-value is less than 0.05. The p-value 
 
 ```{r}
 efficDrugUser = 0.18/(0.18 + 1) * 100
-efficDrugUser = round(efficMales)
+efficDrugUser = round(efficDrugUser)
 
 confIntLower = 0.08/(0.08 + 1) * 100
 confIntLower = round(confIntLower)
@@ -235,7 +235,7 @@ confIntUpper = 0.36/(0.36 + 1) * 100
 confIntUpper = round(confIntUpper)
 ```
   
-The efficacy for DrugUser was `r efficMales`%  
+The efficacy for DrugUser was `r efficDrugUser`%  
 
 The 95% confidence interval for efficacy was (`r confIntLower` , `r confIntUpper`)%
 
@@ -243,6 +243,6 @@ The 95% confidence interval for efficacy was (`r confIntLower` , `r confIntUpper
 
 The question asked was to determine whether the covid19 vaccine affected the subgroups Male, Female, LGBTQ, and DrugUser tested. Additionally, we were asked to recommend or not recommend the covid19 vaccine for the four subgroups. The Male subgroup was affected positively by the vaccine. Males were less likely to contract covid19 after receiving the vaccine versus the placebo. The Female subgroup showed a positive effect as well. Females who took the vaccine were also affected positively compared to those who took the placebo. Therefore, I conclude that both Males and Females should take the covid19 vaccine.
   
-The next subgroup includes the LGBTQ subgroup who were negatively affected by the covid19 vaccine. LGBTQ individuals were more likely to contract covid19 after taking the vaccine. The placebo seemed more effective for this subgroup. The subgroup DrugUser also showed a negative affect when they took the covid19 vaccine versus the placebo. Members of this group were more likely to contract covid19 after taking getting the vaccine. Therefore, I conclude that members of the LGBTQ subgroup and members of the DrugUser subgroup should not get the vaccine as they are more likely to contract covid19.
+The next subgroup includes the LGBTQ subgroup who were negatively affected by the covid19 vaccine. LGBTQ individuals were more likely to contract covid19 after taking the vaccine. The placebo seemed more effective for this subgroup. The subgroup DrugUser also showed a negative affect when they took the covid19 vaccine versus the placebo. Members of this group were more likely to contract covid19 after taking getting the vaccine. Therefore, I conclude that members of the LGBTQ subgroup and members of the DrugUser subgroup should not get the vaccine as they are more likely to contract covid19. The efficacy for Males was `r efficMales`%. The efficacy for Females was `r efficFemales`%. The efficacy for Males was `r efficLGBTQ`%. The efficacy for Males was `r efficDrugUser`%.
   
 The vaccine had an affect on each of the subgroups. Males and Females were affected positively. I would recommend that these two groups get the covid19 vaccine. The LGBTQ and DrugUser subgroups were affected negatively. I do not recommend that either of these two subgroups get the covid19 vaccine. The results showed that there is a difference in each of these subgroups. Therefore in each case I rejected the null hypothesis.  
