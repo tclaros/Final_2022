@@ -71,7 +71,23 @@ chisqtestGC(table1)
 fisher.test(table1)
 ```  
   
-I reject the null hypothesis because the p-value is less than 0.05. The p-value is 0.00000000004812. The fisher exact table is also significant in showing that we reject the null hypothesis because the p-value 0.00000000002645. The test also confirms that the odds ratio of males who take the placebo contract covid19 2 to 1 more times. I would recommend the Covid19 vaccine for the Male subgroup.  
+I reject the null hypothesis because the p-value is less than 0.05. The p-value is 0.00000000004812. The fisher exact table is also significant in showing that we reject the null hypothesis because the p-value 0.00000000002645. The test also confirms that the odds ratio of males who take the placebo contract covid19 2 to 1 more times. I would recommend the Covid19 vaccine for the Male subgroup. 
+
+## Efficacy
+
+```{r}
+efficMales = 2.09/(2.09 + 1) * 100
+efficMales = round(efficMales)
+
+confIntLower = 1.67/(1.67 + 1) * 100
+confIntLower = round(confIntLower)
+confIntUpper = 2.64/(2.64 + 1) * 100
+confIntUpper = round(confIntUpper)
+```
+  
+The efficacy for Males was `r efficMales`%  
+
+The 95% confidence interval for efficacy was (`r confIntLower` , `r confIntUpper`)%
 
 ## Females
 
@@ -106,6 +122,22 @@ fisher.test(table1)
 ```  
    
 I reject the null hypothesis because the p-value is less than 0.05. The p-value is 0.0011. The fisher exact table is also significant in showing that we reject the null hypothesis because the p-value = 0.0009484. The test also confirms that the odds ratio of females who take the placebo contract covid19 almost 1.4 more times than Females who took the vaccine. I would recommend the Covid19 vaccine for the Female subgroup.    
+
+## Efficacy
+
+```{r}
+efficFemales = 1.43/(1.43 + 1) * 100
+efficFemales = round(efficMales)
+
+confIntLower = 1.15/(1.15 + 1) * 100
+confIntLower = round(confIntLower)
+confIntUpper = 1.78/(1.78 + 1) * 100
+confIntUpper = round(confIntUpper)
+```
+  
+The efficacy for Females was `r efficMales`%  
+
+The 95% confidence interval for efficacy was (`r confIntLower` , `r confIntUpper`)%
    
 ## LGBTQ
 
@@ -140,6 +172,22 @@ fisher.test(table1)
 ```    
   
 I reject the null hypothesis because the p-value is less than 0.05. The p-value is 0.0000000132. The fisher exact table is also significant in showing that we reject the null hypothesis because the p-value = 0.000000001642. The odds ratio is 0.1465. I would not recommend that members of the LGBTQ subgroup get the covid19 vaccine.   
+
+## Efficacy
+
+```{r}
+efficLGBTQ = 0.15/(0.15 + 1) * 100
+efficLGBTQ = round(efficMales)
+
+confIntLower = 0.06/(0.06 + 1) * 100
+confIntLower = round(confIntLower)
+confIntUpper = 0.31/(0.31 + 1) * 100
+confIntUpper = round(confIntUpper)
+```
+  
+The efficacy for LGBTQ was `r efficMales`%  
+
+The 95% confidence interval for efficacy was (`r confIntLower` , `r confIntUpper`)%
     
 ## Druggies
 
@@ -174,6 +222,22 @@ fisher.test(table1)
 ```      
   
 I reject the null hypothesis because the p-value is less than 0.05. The p-value is 0.0000001803. The fisher exact table is also significant in showing that we reject the null hypothesis because the p-value = 0.00000002886. The odds ratio is 0.1775. I would not recommend that members of the DrugUser subgroup get the covid19 vaccine.  
+
+## Efficacy
+
+```{r}
+efficDrugUser = 0.18/(0.18 + 1) * 100
+efficDrugUser = round(efficMales)
+
+confIntLower = 0.08/(0.08 + 1) * 100
+confIntLower = round(confIntLower)
+confIntUpper = 0.36/(0.36 + 1) * 100
+confIntUpper = round(confIntUpper)
+```
+  
+The efficacy for DrugUser was `r efficMales`%  
+
+The 95% confidence interval for efficacy was (`r confIntLower` , `r confIntUpper`)%
 
 # Discussion and Conclusion
 
